@@ -91,16 +91,6 @@ our gaming website is has a modern and electric feel with purple and neon tones*
   align-items: center;
 }
 
-.nova-theme .logo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.nova-theme .logo-img {
-  width: 100px;
-  height: auto;
-}
 
 .nova-theme .nav-list {
   list-style: none;
