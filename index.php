@@ -17,7 +17,8 @@
   <?php include 'header.inc'; ?>
 
   <!-- HERO SECTION -->
-  <section id="hero" class="content">
+   <section id="hero" class="hero content">
+
     <div class="hero-box">
       <h1>Welcome to the Future of Gaming</h1>
       <p>
