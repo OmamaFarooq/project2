@@ -1,23 +1,31 @@
-
 <?php
-    require_once("settings.php");
+require_once("settings.php");
 session_start();
 if (!isset($_SESSION['manager'])) {
     header("Location: login.php");
     exit();
 }
-?>
 
 $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) die("Database connection failed");
 
+$message = "";
+$result = null;
+
+// Handle form submissions
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Sorting
+    $sort_field = mysqli_real_escape_string($conn, $_POST['sort_field'] ?? 'EOInumber');
+
+    // Delete EOIs by job reference
     if (isset($_POST['delete_job_ref'])) {
         $job_ref = mysqli_real_escape_string($conn, $_POST['delete_job_ref']);
         mysqli_query($conn, "DELETE FROM eoi WHERE job_reference_number='$job_ref'");
         $message = "All EOIs for job reference $job_ref have been deleted.";
     }
+
+    // Update EOI status
     if (isset($_POST['update_status_id'], $_POST['new_status'])) {
         $id = intval($_POST['update_status_id']);
         $status = mysqli_real_escape_string($conn, $_POST['new_status']);
@@ -25,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "EOI #$id status updated to $status.";
     }
 
+    // Queries
     if (isset($_POST['query_type'])) {
         $query_type = $_POST['query_type'];
         $where = "";
@@ -38,8 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($fname) $conditions[] = "first_name='$fname'";
             if ($lname) $conditions[] = "last_name='$lname'";
             if ($conditions) $where = "WHERE " . implode(" AND ", $conditions);
+        } elseif ($query_type == "all") {
+            $where = "";
         }
-        $sql_list = "SELECT * FROM eoi $where";
+        $sql_list = "SELECT * FROM eoi $where ORDER BY $sort_field";
         $result = mysqli_query($conn, $sql_list);
     }
 }
@@ -54,26 +65,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body class="theme-futuristic">
 
+<?php include 'header.inc'; ?>
+
 <h1>Manage EOIs</h1>
+<p>Logged in as: <?php echo $_SESSION['manager']; ?> | <a href="logout.php">Logout</a></p>
 
 <?php if (!empty($message)) echo "<p>$message</p>"; ?>
 
 <h2>List EOIs</h2>
 <form method="post">
+    <label>Query Type:
     <select name="query_type">
         <option value="all">All EOIs</option>
         <option value="job_ref">By Job Reference</option>
         <option value="applicant">By Applicant</option>
-    </select><br><br>
+    </select>
+    </label><br><br>
 
     <label>Job Reference: <input type="text" name="job_ref_filter"></label><br>
     <label>First Name: <input type="text" name="first_name_filter"></label><br>
     <label>Last Name: <input type="text" name="last_name_filter"></label><br>
+
+    <label>Sort by:
+    <select name="sort_field">
+        <option value="EOInumber">EOInumber</option>
+        <option value="first_name">First Name</option>
+        <option value="last_name">Last Name</option>
+        <option value="job_reference_number">Job Ref</option>
+        <option value="status">Status</option>
+    </select>
+    </label><br><br>
+
     <button type="submit">Run Query</button>
 </form>
 
 <?php
-if (!empty($result)) {
+if (!empty($result) && mysqli_num_rows($result) > 0) {
     echo "<h3>Results:</h3><table border='1' cellpadding='5'>";
     echo "<tr>
         <th>EOInumber</th><th>Job Ref</th><th>Name</th><th>Email</th>
@@ -81,7 +108,7 @@ if (!empty($result)) {
         <th>Change Status</th>
     </tr>";
     while ($row = mysqli_fetch_assoc($result)) {
-        $skills = trim($row['skill1'] . " " . $row['skill2']);
+        $skills = trim(($row['skill1'] ?? '') . " " . ($row['skill2'] ?? '') . " " . ($row['skill3'] ?? '') . " " . ($row['skill4'] ?? ''));
         echo "<tr>
             <td>{$row['EOInumber']}</td>
             <td>{$row['job_reference_number']}</td>
@@ -105,6 +132,8 @@ if (!empty($result)) {
         </tr>";
     }
     echo "</table>";
+} elseif (!empty($result)) {
+    echo "<p>No EOIs found for this query.</p>";
 }
 ?>
 
@@ -114,6 +143,7 @@ if (!empty($result)) {
     <button type="submit">Delete</button>
 </form>
 
+<?php include 'footer.inc'; ?>
 </body>
 </html>
 
