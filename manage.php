@@ -1,5 +1,13 @@
+
 <?php
-require_once("settings.php");
+    require_once("settings.php");
+session_start();
+if (!isset($_SESSION['manager'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
 $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) die("Database connection failed");
 
