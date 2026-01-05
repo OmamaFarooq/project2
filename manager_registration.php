@@ -2,23 +2,23 @@
 require_once("settings.php");
 $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) die("Database connection failed");
-
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = trim($_POST['username']);
-    $password = $_POST['password'];
+$username = trim($_POST['username']);
+$password = $_POST['password'];
     if (!preg_match("/^[A-Za-z0-9_]{3,20}$/", $username)) {
         $message = "Username must be 3-20 letters, numbers, or underscores.";
     } elseif (!preg_match("/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/", $password)) {
         $message = "Password must be 8+ chars, include uppercase, number, and special char.";
-    } else {
+    } 
+    
+    else {
         $username = mysqli_real_escape_string($conn, $username);
 
         $check = mysqli_query($conn, "SELECT * FROM managers WHERE username='$username'");
         if (mysqli_num_rows($check) > 0) {
-            $message = "Username already exists.";
-        } else {
+            $message = "Username already exists.";  } else {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             mysqli_query($conn, "INSERT INTO managers (username, password_hash) VALUES ('$username','$hash')");
             $message = "Manager registered successfully.";
