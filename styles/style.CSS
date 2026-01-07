@@ -413,14 +413,18 @@ aside.classic-theme a:hover {
    FOOTER
    ============================== */
 
+
 .classic-theme footer {
-  margin-top: auto;   
+
   text-align: center;
+    background: rgba(245, 240, 255, 0.7);
   padding: 15px;
+  border: none;
+  box-shadow: none;
   font-size: 18px;
+  font-family: inherit;
   color: var(--text-light);
 }
-
 .classic-theme footer a {
   color: var(--text-light);
   text-decoration: none;
@@ -820,12 +824,12 @@ body.theme-futuristic {
 .theme-futuristic footer {
 
 
-
+ background: rgba(245, 240, 255, 0.7);
   text-align: center;
-  padding: 25px;
+  padding: 15px;
   border: none;
   box-shadow: none;
-  font-size: 25px;
+  font-size: 18px;
   font-family: inherit;
   color: var(--text-light);
 }
