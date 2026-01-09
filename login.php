@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $message = "Invalid credentials.";
         }
     } else {
-        $message = "Invalid credentials.";
+        $message = "Account locked, Try again in 5 minutes.";
     }
 }
 ?>
