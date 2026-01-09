@@ -414,7 +414,12 @@ aside.classic-theme a:hover {
 /* ==============================
    FOOTER
    ============================== */
+footer.classic-theme {
+    width: 100%;
+    padding: 15px 0;
+    margin-top: 40px;
 
+<<<<<<< HEAD
 .classic-theme footer {
   margin-top: auto;   
   text-align: center;
@@ -422,12 +427,28 @@ aside.classic-theme a:hover {
   padding: 15px;
   font-size: 18px;
   color: var(--text-light);
+=======
+    background-color: rgba(232, 229, 237, 0.9);
+    border-top: 2px solid #9a7ca8;
+    box-shadow: 0 0 6px rgba(154, 124, 168, 0.3);
+
+    text-align: center;
+    color: #3c2f4b;
+
+    /* fixes common issues */
+    display: block;
+    overflow: auto;
+    position: relative;
+>>>>>>> 5f77daa61bca9262afdb35be48b8eb238b2defc8
 }
 
-.classic-theme footer a {
-  color: var(--text-light);
-  text-decoration: none;
+footer.classic-theme p {
+    font-size: 26px;
+    opacity: 0.8;
+    margin: 0;
 }
+
+
 
 
 /* ==============================
@@ -820,12 +841,13 @@ body.theme-futuristic {
     background: #9a7ca8;
     box-shadow: 0 0 14px rgba(154, 124, 168, 0.6);
 }
-.theme-futuristic footer {
-
-
-
+ .theme-futuristic footer {
   text-align: center;
+<<<<<<< HEAD
    background: rgba(245, 240, 255, 0.7);
+=======
+  background: rgba(245, 240, 255, 0.7);
+>>>>>>> 5f77daa61bca9262afdb35be48b8eb238b2defc8
   padding: 25px;
   border: none;
   box-shadow: none;
@@ -840,6 +862,7 @@ body.theme-futuristic {
   font-size: inherit;
 }
 
+
 /* === RESPONSIVE === */
 @media (max-width: 700px) {
     .theme-futuristic form {
@@ -851,6 +874,35 @@ body.theme-futuristic {
         gap: 15px;
     }
 }
+footer.theme-futuristic {
+    width: 100%;
+    padding: 15px 0;
+    margin-top: 40px;
+
+    background-color: rgba(232, 229, 237, 0.9);
+    border-top: 2px solid #9a7ca8;
+    box-shadow: 0 0 6px rgba(154, 124, 168, 0.3);
+
+    text-align: center;
+    color: #3c2f4b;
+
+    /* fixes common issues */
+    display: block;
+    overflow: auto;
+    position: relative;
+}
+
+footer.theme-futuristic {
+    font-size: 26px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+footer,.theme-futuristic a {
+    color: #3c2f4b;
+    text-decoration: none;
+}
+
 
 /*THROUGHOUT THE CSS, WE HAVE USED A CONSISTENT COLOR PALETTE
 FEATURING VARIOUS SHADES OF PURPLE AND BLUE TO CREATE A FUTURISTIC
