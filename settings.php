@@ -3,6 +3,6 @@
 
 $host = "localhost";
 $user = "root";
-$pwd  = "";          // usually empty for XAMPP/WAMP
-$sql_db = "primenova"; // your database name
+$pwd  = "";         
+$sql_db = "job_applications"; 
 ?>
