@@ -414,10 +414,12 @@ aside.classic-theme a:hover {
 /* ==============================
    FOOTER
    ============================== */
-.classic-theme footer {
+body.classic-theme footer {
+    flex-shrink: 0;     
+    margin-top: auto;     
+    min-height: 80px;     
     width: 100%;
     padding: 15px 0;
-    margin-top: 40px;
 
     background-color: rgba(232, 229, 237, 0.9);
     border-top: 2px solid #9a7ca8;
@@ -425,14 +427,9 @@ aside.classic-theme a:hover {
 
     text-align: center;
     color: #3c2f4b;
-
-    /* fixes common issues */
-    display: block;
-    overflow: auto;
-    position: relative;
 }
 
-.classic-theme footer p {
+body.classic-theme footer p {
     font-size: 26px;
     opacity: 0.8;
     margin: 0;
