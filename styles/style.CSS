@@ -821,15 +821,13 @@ body.theme-futuristic {
     background: #9a7ca8;
     box-shadow: 0 0 14px rgba(154, 124, 168, 0.6);
 }
-.theme-futuristic footer {
-
-
- background: rgba(245, 240, 255, 0.7);
+ .theme-futuristic footer {
   text-align: center;
-  padding: 15px;
+  background: rgba(245, 240, 255, 0.7);
+  padding: 25px;
   border: none;
   box-shadow: none;
-  font-size: 18px;
+  font-size: 25px;
   font-family: inherit;
   color: var(--text-light);
 }
@@ -839,6 +837,7 @@ body.theme-futuristic {
   text-decoration: none;
   font-size: inherit;
 }
+
 
 /* === RESPONSIVE === */
 @media (max-width: 700px) {
