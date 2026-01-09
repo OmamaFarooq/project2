@@ -1,6 +1,6 @@
 
 /*The authors of this CSS file are omama mohammad, shanzay Gul and Maryam Ali our purpose was 
-to style our website each of us did our specific pages.(omama mohammmad did the styling for the 
+to style our website each of us did our specific pages.omama mohammmad did the styling for the 
 about.html and the jobs.html where as maryam alali did the index.html and shanzay gul did the apply.html
 our gaming website is has a modern and electric feel with purple and neon tones*/
 /* Neon colours to give  our website an electric effect */
@@ -273,12 +273,14 @@ body.classic-theme {
   height: auto;
 }
 
-.classic-theme .nav-list {
-  list-style: none;
+.classic-theme .nav-list {     /* navigation links are similar on most pages to maintain consistency across all the web pages*/
   display: flex;
   gap: 25px;
   margin-right: 20px;
+  list-style: none;
 }
+                                               
+  
 
 .classic-theme .nav-list a {
   color: #3c2f4b;
@@ -416,6 +418,7 @@ aside.classic-theme a:hover {
 .classic-theme footer {
   margin-top: auto;   
   text-align: center;
+   background: rgba(245, 240, 255, 0.7);
   padding: 15px;
   font-size: 18px;
   color: var(--text-light);
@@ -822,6 +825,7 @@ body.theme-futuristic {
 
 
   text-align: center;
+   background: rgba(245, 240, 255, 0.7);
   padding: 25px;
   border: none;
   box-shadow: none;
