@@ -845,7 +845,7 @@ background-color: rgba(230, 220, 245, 0.85);
 
     .theme-futuristic .nav-list {
         gap: 15px;
-    }
+    }}
     body.enhance {
   margin: 0;
   padding: 0;
@@ -1041,7 +1041,7 @@ background-color: rgba(230, 220, 245, 0.85);
 }
 
 
-}
+
 /*THROUGHOUT THE CSS, WE HAVE USED A CONSISTENT COLOR PALETTE
 FEATURING VARIOUS SHADES OF PURPLE AND BLUE TO CREATE A FUTURISTIC
 AND NEON AESTHETIC. THE FONTS, SPACING, AND ELEMENT STYLES ARE DESIGNED
