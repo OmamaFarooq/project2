@@ -823,10 +823,10 @@ body.theme-futuristic {
 
 background-color: rgba(230, 220, 245, 0.85); 
   text-align: center;
-  padding: 25px;
+  padding: 15px;
   border: none;
   box-shadow: none;
-  font-size: 25px;
+  font-size: 20px;
   font-family: inherit;
   color: var(--text-light);
 }
