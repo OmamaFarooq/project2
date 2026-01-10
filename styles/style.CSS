@@ -424,6 +424,8 @@ background-color: rgba(230, 220, 245, 0.85);
 .classic-theme footer a {
   color: var(--text-light);
   text-decoration: none;
+font-size: inherit;
+
 }
 
 
@@ -846,7 +848,7 @@ background-color: rgba(230, 220, 245, 0.85);
     .theme-futuristic .nav-list {
         gap: 15px;
     }}
-    body.enhance {
+   body.enhance {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
