@@ -482,9 +482,7 @@ body.modern  {
     align-items: center;
     border-bottom: 2px solid #b79bc9;
 }
-/* ==================
-   Classic Theme Header Logo
-   ================== */
+
 .modern .logo {
   display: flex;              
   align-items: center;        
@@ -507,13 +505,13 @@ body.modern  {
 }
 
 .modern .nav-list a {
-    color: #3f2f55;              /* darker nav text */
+    color: #3f2f55;              
     text-decoration: none;
     transition: 0.3s;
 }
 
 .modern .nav-list a:hover {
-    color: #9f6f8e;              /* muted rose */
+    color: #9f6f8e;              
 }
 
 
@@ -828,22 +826,8 @@ body.theme-futuristic {
     background: #9a7ca8;
     box-shadow: 0 0 14px rgba(154, 124, 168, 0.6);
 }
- .theme-futuristic footer {
-  text-align: center;
-  background: rgba(245, 240, 255, 0.7);
-  padding: 25px;
-  border: none;
-  box-shadow: none;
-  font-size: 25px;
-  font-family: inherit;
-  color: var(--text-light);
-}
+ 
 
-.theme-futuristic footer a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: inherit;
-}
 
 
 /* === RESPONSIVE === */
@@ -884,6 +868,13 @@ body.theme-futuristic {
 .theme-futuristic footer a {
     color: #3c2f4b;
     text-decoration: none;
+}
+
+body.classic-theme footer,
+body.theme-futuristic footer {
+    isolation: isolate;
+    position: relative;
+    z-index: 5;
 }
 
 
