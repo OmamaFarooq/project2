@@ -57,7 +57,9 @@
       <dd>
         Took a leadership role by establishing the Jira workspace and creating the GitHub organization.
         Developed jobs.html and about.html pages while ensuring consistency and quality across the project.
-      </dd>
+        In part 2 of the project, she modified the CSS for responsiveness and enhanced user experience, she 
+        also modified some html scripts. she created the manage.php, login.php. manger_registration.php pages 
+        and process_eoi.php; she contributed to the backend functionality using PHP. Also explained the enhancements made in part 2 in enhancements.php. 
 
       <dt>Shanzay Gul</dt>
       <dd>
@@ -67,8 +69,8 @@
       <dt>Mariam Al Ali</dt>
       <dd>
         Developed index.html and styled it through CSS, completed assigned Jira tasks, and ensured visual and technical consistency throughout the project.
-      </dd>
-    </dl>
+        Maryam converted the HTML files to PHP files and created header.inc and footer.inc for better code reusability. She also created the settings.php page 
+        and contributed to the backend functionality using PHP.
   </div>
 
   <!-- Members Interests Table -->
