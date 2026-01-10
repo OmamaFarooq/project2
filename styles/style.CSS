@@ -424,6 +424,8 @@ background-color: rgba(230, 220, 245, 0.85);
 .classic-theme footer a {
   color: var(--text-light);
   text-decoration: none;
+font-size: inherit;
+
 }
 
 
@@ -846,7 +848,7 @@ background-color: rgba(230, 220, 245, 0.85);
     .theme-futuristic .nav-list {
         gap: 15px;
     }
-    body.enhance {
+   body.enhance {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -967,12 +969,24 @@ background-color: rgba(230, 220, 245, 0.85);
   margin-bottom: 15px;
 }
 
+.enhance hr {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(to right, #3498db, #2980b9);
+  margin: 40px 0;
+}
+
 .enhance pre {
   background: #ecf0f1;
   padding: 15px;
   border-left: 4px solid #3498db;
   border-radius: 6px;
   overflow-x: auto;
+}
+
+.enhance pre code {
+  font-family: 'Courier New', monospace;
+  color: #2c3e50;
 }
 
 .enhance .item,
