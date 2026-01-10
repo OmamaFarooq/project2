@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.CSS">
 </head>
 
-<body class="nova-theme">
+<body class="modern">
 
 <?php include 'header.inc'; ?>
 
