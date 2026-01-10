@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include 'header.inc'; ?>
 
 <h1>Manage EOIs</h1>
-<p>Logged in as: <?php echo $_SESSION['manager']; ?> | <a href="logout.php">Logout</a></p>
+<p>Logged in as: <?php echo $_SESSION['manager']; ?> | <a href="login.php">Logout</a></p>
 
 <?php if (!empty($message)) echo "<p>$message</p>"; ?>
 
