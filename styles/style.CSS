@@ -1,6 +1,6 @@
 
 /*The authors of this CSS file are omama mohammad, shanzay Gul and Maryam Ali our purpose was 
-to style our website each of us did our specific pages.omama mohammmad did the styling for the 
+to style our website each of us did our specific pages.(omama mohammmad did the styling for the 
 about.html and the jobs.html where as maryam alali did the index.html and shanzay gul did the apply.html
 our gaming website is has a modern and electric feel with purple and neon tones*/
 /* Neon colours to give  our website an electric effect */
@@ -273,14 +273,12 @@ body.classic-theme {
   height: auto;
 }
 
-.classic-theme .nav-list {     /* navigation links are similar on most pages to maintain consistency across all the web pages*/
+.classic-theme .nav-list {
+  list-style: none;
   display: flex;
   gap: 25px;
   margin-right: 20px;
-  list-style: none;
 }
-                                               
-  
 
 .classic-theme .nav-list a {
   color: #3c2f4b;
@@ -414,28 +412,20 @@ aside.classic-theme a:hover {
 /* ==============================
    FOOTER
    ============================== */
-.classic-theme footer {
-    flex-shrink: 0;     
-    margin-top: auto;     
-    min-height: 80px;     
-    width: 100%;
-    padding: 15px 0;
 
-    background-color: rgba(245, 240, 255, 0.7);
-    border-top: 2px solid #9a7ca8;
-    box-shadow: 0 0 6px rgba(154, 124, 168, 0.3);
-
-    text-align: center;
-    color: #3c2f4b;
+.classic-theme footer { 
+background-color: rgba(230, 220, 245, 0.85); 
+  margin-top: auto;   
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  color: var(--text-light);
 }
 
-.classic-theme footer p {
-    font-size: 26px;
-    opacity: 0.8;
-    margin: 0;
+.classic-theme footer a {
+  color: var(--text-light);
+  text-decoration: none;
 }
-
-
 
 
 /* ==============================
@@ -482,7 +472,9 @@ body.modern  {
     align-items: center;
     border-bottom: 2px solid #b79bc9;
 }
-
+/* ==================
+   Classic Theme Header Logo
+   ================== */
 .modern .logo {
   display: flex;              
   align-items: center;        
@@ -505,13 +497,13 @@ body.modern  {
 }
 
 .modern .nav-list a {
-    color: #3f2f55;              
+    color: #3f2f55;              /* darker nav text */
     text-decoration: none;
     transition: 0.3s;
 }
 
 .modern .nav-list a:hover {
-    color: #9f6f8e;              
+    color: #9f6f8e;              /* muted rose */
 }
 
 
@@ -826,9 +818,24 @@ body.theme-futuristic {
     background: #9a7ca8;
     box-shadow: 0 0 14px rgba(154, 124, 168, 0.6);
 }
- 
+.theme-futuristic footer {
 
 
+background-color: rgba(230, 220, 245, 0.85); 
+  text-align: center;
+  padding: 25px;
+  border: none;
+  box-shadow: none;
+  font-size: 25px;
+  font-family: inherit;
+  color: var(--text-light);
+}
+
+.theme-futuristic footer a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: inherit;
+}
 
 /* === RESPONSIVE === */
 @media (max-width: 700px) {
@@ -841,37 +848,10 @@ body.theme-futuristic {
         gap: 15px;
     }
 }
-.theme-futuristic footer{
-    width: 100%;
-    padding: 15px 0;
-    margin-top: 40px;
-    background-color: rgba(245, 240, 255, 0.7);
-    border-top: 2px solid #9a7ca8;
-    box-shadow: 0 0 6px rgba(154, 124, 168, 0.3);
-    text-align: center;
-    color: #3c2f4b;
-    display: block;
-    overflow: auto;
-    position: relative;
-}
-
-.theme-futuristic footer p {
-    font-size: 26px;
-    opacity: 0.8;
-    margin: 0;
-}
-
-.theme-futuristic footer a {
-    color: #3c2f4b;
-    text-decoration: none;
-}
-
-
-
-
-
 /*THROUGHOUT THE CSS, WE HAVE USED A CONSISTENT COLOR PALETTE
 FEATURING VARIOUS SHADES OF PURPLE AND BLUE TO CREATE A FUTURISTIC
 AND NEON AESTHETIC. THE FONTS, SPACING, AND ELEMENT STYLES ARE DESIGNED
 TO ENSURE READABILITY AND A MODERN LOOK. */
 /* WE HAVE ALSO ENSURED FOLLOWING THE SPECIFIC RULES REQUESTED IN THE INSTRUCTIONS FILE */
+/* Footer background only for Classic and Futuristic */}
+
