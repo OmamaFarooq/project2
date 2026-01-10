@@ -421,7 +421,7 @@ aside.classic-theme a:hover {
     width: 100%;
     padding: 15px 0;
 
-    background-color:red 
+    background-color: rgba(245, 240, 255, 0.7);
     border-top: 2px solid #9a7ca8;
     box-shadow: 0 0 6px rgba(154, 124, 168, 0.3);
 
@@ -845,15 +845,11 @@ body.theme-futuristic {
     width: 100%;
     padding: 15px 0;
     margin-top: 40px;
-
-    background-color: #8B0000;
+    background-color: rgba(245, 240, 255, 0.7);
     border-top: 2px solid #9a7ca8;
     box-shadow: 0 0 6px rgba(154, 124, 168, 0.3);
-
     text-align: center;
     color: #3c2f4b;
-
-    /* fixes common issues */
     display: block;
     overflow: auto;
     position: relative;
@@ -870,12 +866,8 @@ body.theme-futuristic {
     text-decoration: none;
 }
 
-body.classic-theme footer,
-body.theme-futuristic footer {
-    isolation: isolate;
-    position: relative;
-    z-index: 5;
-}
+
+
 
 
 /*THROUGHOUT THE CSS, WE HAVE USED A CONSISTENT COLOR PALETTE
