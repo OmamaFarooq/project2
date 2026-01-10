@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.CSS">
 </head>
 
-<body class="modern">
+<body class="enhance">
 
 <?php include 'header.inc'; ?>
 

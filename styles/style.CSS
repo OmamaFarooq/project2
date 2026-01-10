@@ -846,6 +846,188 @@ background-color: rgba(230, 220, 245, 0.85);
     .theme-futuristic .nav-list {
         gap: 15px;
     }
+    body.enhance {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: 
+    url("../images/bck_grnd.jpg") no-repeat center center fixed,
+    linear-gradient(120deg, #f5f7fa, #c3cfe2);
+  background-size: cover;
+  background-blend-mode: overlay;
+  overflow-x: hidden;
+}
+
+.enhance .logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: 'Montserrat', sans-serif;
+  color: #2c3e50;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.enhance .logo-img {
+  width: 90px;
+  height: auto;
+}
+
+.enhance header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  border-bottom: 2px solid #3498db;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+}
+
+.enhance .nav-bar {
+  width: 100%;
+  padding: 12px 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+}
+
+.enhance nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.enhance .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 20px;
+}
+
+.enhance .nav-list a {
+  color: #34495e;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.enhance .nav-list a:hover {
+  color: #2980b9;
+  text-shadow: 0 0 3px rgba(41, 128, 185, 0.4);
+}
+
+.enhance .hero {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7), rgba(200, 220, 255, 0.8));
+}
+
+.enhance .hero-box {
+  max-width: 1200px;
+  padding: 80px 90px;
+  margin: 25px auto 0;
+  background: #ffffffcc;
+  border: 1px solid #3498db;
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+  transition: 0.3s ease;
+}
+
+.enhance .hero-box:hover {
+  transform: scale(1.02);
+}
+
+.enhance .content {
+  padding: 50px 5%;
+}
+
+.enhance h1, 
+.enhance h2, 
+.enhance h3 {
+  color: #2c3e50;
+}
+
+.enhance h1 {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.enhance h2 {
+  font-size: 32px;
+  margin-top: 40px;
+}
+
+.enhance p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.enhance pre {
+  background: #ecf0f1;
+  padding: 15px;
+  border-left: 4px solid #3498db;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.enhance .item,
+.enhance .content-box {
+  flex: 1;
+  background: #ffffffcc;
+  border: 1px solid #3498db;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.enhance .item:hover,
+.enhance .content-box:hover {
+  transform: scale(1.03);
+}
+
+.enhance .icon {
+  font-size: 38px;
+  color: #2980b9;
+}
+
+.enhance footer {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-top: 2px solid #3498db;
+  font-size: 20px;
+  font-family: inherit;
+  color: #2c3e50;
+}
+
+.enhance footer a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: inherit;
+}
+
+@media (max-width: 768px) {
+  .enhance .nav-list {
+    display: none;
+  }
+
+  .enhance .about-items {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .enhance .hero-box {
+    padding: 50px 30px;
+  }
+}
+
 }
 /*THROUGHOUT THE CSS, WE HAVE USED A CONSISTENT COLOR PALETTE
 FEATURING VARIOUS SHADES OF PURPLE AND BLUE TO CREATE A FUTURISTIC
