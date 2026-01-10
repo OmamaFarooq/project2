@@ -29,10 +29,10 @@ A dropdown menu allows sorting by EOInumber, first name, last name, job referenc
 The selected field is passed through a POST request and used in the SQL <code>ORDER BY</code> clause.
 </p>
 
-<pre>
+<pre><code>
 $sort_field = mysqli_real_escape_string($conn, $_POST['sort_field']);
 $sql = "SELECT * FROM eoi ORDER BY $sort_field";
-</pre>
+</code></pre>
 
 <p>
 This enhancement improves usability by allowing managers to easily organize and review applications.
@@ -56,10 +56,10 @@ and a special character.
 Passwords are securely stored using hashing.
 </p>
 
-<pre>
+<pre><code>
 $hash = password_hash($password, PASSWORD_DEFAULT);
 INSERT INTO managers (username, password_hash)
-</pre>
+</code></pre>
 
 <p>
 This enhancement improves security and allows controlled manager access to the system.
@@ -77,13 +77,13 @@ Only authenticated managers with a valid session can access this page.
 If a user attempts to access the page without being logged in, they are redirected to the login page.
 </p>
 
-<pre>
+<pre><code>
 session_start();
 if (!isset($_SESSION['manager'])) {
     header("Location: login.php");
     exit();
 }
-</pre>
+</code></pre>
 
 <p>
 This enhancement prevents unauthorized access to sensitive application data.
@@ -101,11 +101,11 @@ When the limit is reached, the account is locked for five minutes.
 The lockout time is stored in the database and checked during login.
 </p>
 
-<pre>
+<pre><code>
 if ($failed >= 3) {
     $lockout = date("Y-m-d H:i:s", strtotime("+5 minutes"));
 }
-</pre>
+</code></pre>
 
 <p>
 This enhancement protects the system against brute-force login attempts.
