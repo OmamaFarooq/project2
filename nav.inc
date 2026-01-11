@@ -1,5 +1,5 @@
 <nav>
-  <ul class="nav-list">
+
     <li><a href="index.php">Home</a></li>
     <li><a href="about.php">About</a></li>
     <li><a href="apply.php">Apply</a></li>
@@ -9,5 +9,5 @@
     <li><a href="manage.php">Manage</a></li>
     <li><a href="enhacements.php">Enhancements</a></li>
     <li><a href="mailto:info@primenovagaming.com.au">Email</a></li>
-  </ul>
+ 
 </nav>
