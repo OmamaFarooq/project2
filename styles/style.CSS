@@ -1042,6 +1042,9 @@ background-color: rgba(230, 220, 245, 0.85);
   }
 }
 
+.nav-list li {
+  padding: 0 10px;
+}
 
 
 /*THROUGHOUT THE CSS, WE HAVE USED A CONSISTENT COLOR PALETTE
