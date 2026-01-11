@@ -255,13 +255,16 @@ body.classic-theme {
   width: 100px;
   height: auto;
 }
-.classic-theme .nav-bar { 
+
+
+
+
+.nova-theme .nav-bar {
   width: 100%;
   padding: 15px 0;
-  background: transparent;      
-    border-bottom: none;          
-    box-shadow: none;             
-    padding: 0;
+  background-color: rgba(232, 229, 237, 0.85);
+  border-bottom: 2px solid #9a7ca8;
+  box-shadow: 0 0 6px rgba(154, 124, 168, 0.5);
 }
 
 .classic-theme nav {
@@ -272,27 +275,25 @@ body.classic-theme {
   align-items: center;
 }
 
+
 .classic-theme .nav-list {
-  list-style: none;        /* remove bullets */
-  display: flex;           /* horizontal layout */
-  gap: 20px;               /* space between links */
-  margin: 0;
-  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 20px;
 }
 
 .classic-theme .nav-list a {
   color: #3c2f4b;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block;   /* ensures padding works properly */
-  padding: 5px 10px;      /* space around links for click area */
-
 }
 
 .classic-theme .nav-list a:hover {
   color: #a88aa6;
   text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
 }
+
 
 
 
@@ -498,37 +499,40 @@ body.modern  {
   width: 100px;   
   height: auto;
 }
-.modern .nav-bar { 
+.nova-theme .nav-bar {
   width: 100%;
   padding: 15px 0;
-  background: transparent;      
-    border-bottom: none;          /* remove purplish border */
-    box-shadow: none;             /* remove shadow */
-    padding: 0;    
+  background-color: rgba(232, 229, 237, 0.85);
+  border-bottom: 2px solid #9a7ca8;
+  box-shadow: 0 0 6px rgba(154, 124, 168, 0.5);
 }
 
+.nova-theme nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 .modern .nav-list {
-  list-style: none;        /* remove bullets */
-  display: flex;           /* horizontal layout */
-  gap: 20px;               /* space between links */
-  margin: 0;
-  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 20px;
 }
 
 .modern .nav-list a {
   color: #3c2f4b;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block;   /* ensures padding works properly */
-  padding: 5px 10px;      /* space around links for click area */
-
 }
 
 .modern .nav-list a:hover {
   color: #a88aa6;
   text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
 }
-
 
 
 
@@ -727,34 +731,40 @@ body.theme-futuristic {
   width: 100px;   
   height: auto;
 }
-.theme-futuristic .nav-bar { 
+.nova-theme .nav-bar {
   width: 100%;
   padding: 15px 0;
   background-color: rgba(232, 229, 237, 0.85);
   border-bottom: 2px solid #9a7ca8;
   box-shadow: 0 0 6px rgba(154, 124, 168, 0.5);
 }
-/* Navigation Links */
+
+.nova-theme nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 .theme-futuristic .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 20px;
 }
 
-/* Navigation Link Styling */
 .theme-futuristic .nav-list a {
-    text-decoration: none;
-    color: #3f2f55;                 /* darker nav text */
-    font-weight: 500;
-    transition: 0.3s;
+  color: #3c2f4b;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-/* Hover Effect for Navigation Links */
 .theme-futuristic .nav-list a:hover {
-    color: #8d688e;                 /* muted rose */
-    text-shadow: 0 0 6px rgba(168, 138, 166, 0.4);
+  color: #a88aa6;
+  text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
 }
-
 /* === HEADINGS === */
 .theme-futuristic h1 {
     text-align: center;
