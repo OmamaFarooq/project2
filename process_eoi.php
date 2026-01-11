@@ -1,15 +1,12 @@
 <?php
-// this prevents direct access
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: apply.php");
     exit();
 }
 
-// Include database connection
 require_once("settings.php");
 $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) die("Database connection failed");
-
 
 function sanitize($data) {
     return htmlspecialchars(stripslashes(trim($data)));
@@ -31,7 +28,6 @@ $phone        = sanitize($_POST['phone'] ?? '');
 $skills       = $_POST['skills'] ?? [];
 $other_skills = sanitize($_POST['other_skills'] ?? '');
 
-
 $errors = [];
 if (empty($job_ref)) $errors[] = "Job reference required";
 if (!preg_match("/^[A-Za-z]{1,20}$/", $first_name)) $errors[] = "First name invalid";
@@ -47,7 +43,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Email invalid";
 if (!preg_match("/^\d{8}$/", $phone)) $errors[] = "Phone number invalid";
 if (!empty($skills) && empty($other_skills)) $errors[] = "Other skills required if checkbox selected";
 
-// Show errors if any
 if (!empty($errors)) {
     echo "<h1>Validation Error</h1><ul>";
     foreach ($errors as $err) echo "<li>$err</li>";
@@ -55,7 +50,6 @@ if (!empty($errors)) {
     exit();
 }
 
-// this creating eoi table if it doesent exist
 $sql_create = "
 CREATE TABLE IF NOT EXISTS eoi (
     EOInumber INT AUTO_INCREMENT PRIMARY KEY,
@@ -79,28 +73,30 @@ CREATE TABLE IF NOT EXISTS eoi (
 )";
 mysqli_query($conn, $sql_create);
 
-
 $skill1 = $skills[0] ?? null;
 $skill2 = $skills[1] ?? null;
-$skill3 = $skills[2] ?? null;
 
-$sql_insert = "INSERT INTO eoi (
+$stmt = $conn->prepare("INSERT INTO eoi (
     job_reference_number, first_name, last_name, dob, gender,
     unit_number, building_number, street_name, street_number, zone, city,
     email, phone, skill1, skill2, other_skills
-) VALUES (
-    '$job_ref','$first_name','$last_name','$dob','$gender',
-    '$unit_number','$building_number','$street_name','$street_number','$zone','$city',
-    '$email','$phone','$skill1','$skill2','$other_skills'
-)";
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-if (mysqli_query($conn, $sql_insert)) {
-    $eoi_number = mysqli_insert_id($conn);
+$stmt->bind_param(
+    "sssssssssiisssss",
+    $job_ref, $first_name, $last_name, $dob, $gender,
+    $unit_number, $building_number, $street_name, $street_number, $zone, $city,
+    $email, $phone, $skill1, $skill2, $other_skills
+);
+
+if ($stmt->execute()) {
+    $eoi_number = $stmt->insert_id;
     echo "<h1>Application Submitted</h1>";
     echo "<p>Your EOInumber is: <strong>$eoi_number</strong></p>";
 } else {
-    echo "Error inserting record: " . mysqli_error($conn);
+    echo "Error inserting record: " . $stmt->error;
 }
 
+$stmt->close();
 mysqli_close($conn);
 ?>
