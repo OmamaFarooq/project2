@@ -237,7 +237,7 @@ body.classic-theme {
    ============================== */
 
 
-}
+
 
 /* ==================
    Classic Theme Header Logo
@@ -258,24 +258,49 @@ body.classic-theme {
   width: 100px;
   height: auto;
 }
+.nova-theme .nav-bar {
+  width: 100%;
+  padding: 15px 0;
+  background-color: rgba(232, 229, 237, 0.85);
+  border-bottom: 2px solid #9a7ca8;
+  box-shadow: 0 0 6px rgba(154, 124, 168, 0.5);
+}
+
+.nova-theme nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .classic-theme .nav-list {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin-right: 20px;
+  list-style: none;        /* remove bullets */
+  display: flex;           /* horizontal layout */
+  gap: 20px;               /* space between links */
+  margin: 0;
+  padding: 0;
 }
 
 .classic-theme .nav-list a {
   color: #3c2f4b;
   text-decoration: none;
   transition: 0.3s;
+  display: inline-block;   /* ensures padding works properly */
+  padding: 5px 10px;      /* space around links for click area */
+
 }
 
 .classic-theme .nav-list a:hover {
   color: #a88aa6;
   text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
 }
+
+.classic-theme .nav-list li {
+  display: block;          /* ensures each item is a block inside flex */
+}
+
+
 
 /* ==============================
    HEADER & INTRO
@@ -479,19 +504,29 @@ body.modern  {
 }
 
 .modern .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+  list-style: none;        /* remove bullets */
+  display: flex;           /* horizontal layout */
+  gap: 20px;               /* space between links */
+  margin: 0;
+  padding: 0;
 }
 
 .modern .nav-list a {
-    color: #3f2f55;              /* darker nav text */
-    text-decoration: none;
-    transition: 0.3s;
+  color: #3c2f4b;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;   /* ensures padding works properly */
+  padding: 5px 10px;      /* space around links for click area */
+
 }
 
 .modern .nav-list a:hover {
-    color: #9f6f8e;              /* muted rose */
+  color: #a88aa6;
+  text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
+}
+
+.modern .nav-list li {
+  display: block;          /* ensures each item is a block inside flex */
 }
 
 
