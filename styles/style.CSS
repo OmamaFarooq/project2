@@ -232,9 +232,6 @@ body.classic-theme {
   overflow-x: hidden;
 }
 
-/* ==============================
-   NAVIGATION
-   ============================== */
 
 
 
@@ -296,9 +293,6 @@ body.classic-theme {
   text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
 }
 
-.classic-theme .nav-list li {
-  display: block;          /* ensures each item is a block inside flex */
-}
 
 
 
@@ -313,6 +307,7 @@ body.classic-theme {
   box-shadow: 0 0 12px var(--neon-purple);
   padding: 15px 0;
 }
+
 
 .classic-theme h1.intro {
   font-size: 48px;
@@ -532,9 +527,7 @@ body.modern  {
   text-shadow: 0 0 3px rgba(168, 138, 166, 0.5);
 }
 
-.modern .nav-list li {
-  display: block;          /* ensures each item is a block inside flex */
-}
+
 
 
 /* ============================
