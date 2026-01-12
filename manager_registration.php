@@ -1,50 +1,28 @@
 <?php
 require_once("settings.php");
-session_start();
-if (!isset($_SESSION['manager'])) {
-    header("Location: login.php");
-    exit();
-}
-
 $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) die("Database connection failed");
 
 $message = "";
-$result = null;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+    if (!preg_match("/^[A-Za-z0-9_]{3,20}$/", $username)) {
+        $message = "Username must be 3-20 letters, numbers, or underscores.";
+    } elseif (!preg_match("/^(?=.[A-Z])(?=.[0-9])(?=.[!@#$%^&]).{8,}$/", $password)) {
+        $message = "Password must be 8+ chars, include uppercase, number, and special char.";
+    } else {
+        $username = mysqli_real_escape_string($conn, $username);
 
-    $sort_field = mysqli_real_escape_string($conn, $_POST['sort_field'] ?? 'EOInumber');
-
-    if (isset($_POST['delete_job_ref'])) {
-        $job_ref = mysqli_real_escape_string($conn, $_POST['delete_job_ref']);
-        mysqli_query($conn, "DELETE FROM eoi WHERE job_reference_number='$job_ref'");
-        $message = "All EOIs for job reference $job_ref have been deleted.";
-    }
-
-    if (isset($_POST['update_status_id'], $_POST['new_status'])) {
-        $id = intval($_POST['update_status_id']);
-        $status = mysqli_real_escape_string($conn, $_POST['new_status']);
-        mysqli_query($conn, "UPDATE eoi SET status='$status' WHERE EOInumber=$id");
-        $message = "EOI #$id status updated to $status.";
-    }
-
-    if (isset($_POST['query_type'])) {
-        $query_type = $_POST['query_type'];
-        $where = "";
-        if ($query_type == "job_ref" && !empty($_POST['job_ref_filter'])) {
-            $job_ref_filter = mysqli_real_escape_string($conn, $_POST['job_ref_filter']);
-            $where = "WHERE job_reference_number='$job_ref_filter'";
-        } elseif ($query_type == "applicant") {
-            $fname = mysqli_real_escape_string($conn, $_POST['first_name_filter'] ?? '');
-            $lname = mysqli_real_escape_string($conn, $_POST['last_name_filter'] ?? '');
-            $conditions = [];
-            if ($fname) $conditions[] = "first_name='$fname'";
-            if ($lname) $conditions[] = "last_name='$lname'";
-            if ($conditions) $where = "WHERE " . implode(" AND ", $conditions);
+        $check = mysqli_query($conn, "SELECT * FROM managers WHERE username='$username'");
+        if (mysqli_num_rows($check) > 0) {
+            $message = "Username already exists.";
+        } else {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            mysqli_query($conn, "INSERT INTO managers (username, password_hash) VALUES ('$username','$hash')");
+            $message = "Manager registered successfully.";
         }
-        $sql_list = "SELECT * FROM eoi $where ORDER BY $sort_field";
-        $result = mysqli_query($conn, $sql_list);
     }
 }
 ?>
@@ -52,92 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Manage EOIs</title>
-    <link rel="stylesheet" href="styles/style.CSS">
+<meta charset="UTF-8">
+<title>Manager Registration</title>
+<link rel="stylesheet" href="styles/style.CSS">
 </head>
 <body class="theme-futuristic">
-
 <?php include 'header.inc'; ?>
-
-<h1>Manage EOIs</h1>
-<p>Logged in as: <?= htmlspecialchars($_SESSION['manager']) ?> | <a href="login.php">Logout</a></p>
-
-<?php if (!empty($message)) echo "<p>" . htmlspecialchars($message) . "</p>"; ?>
-
-<h2>List EOIs</h2>
+<h1>Manager Registration</h1>
 <form method="post">
-    <label>Query Type:
-    <select name="query_type">
-        <option value="all">All EOIs</option>
-        <option value="job_ref">By Job Reference</option>
-        <option value="applicant">By Applicant</option>
-    </select>
-    </label><br><br>
-
-    <label>Job Reference: <input type="text" name="job_ref_filter"></label><br>
-    <label>First Name: <input type="text" name="first_name_filter"></label><br>
-    <label>Last Name: <input type="text" name="last_name_filter"></label><br>
-
-    <label>Sort by:
-    <select name="sort_field">
-        <option value="EOInumber">EOInumber</option>
-        <option value="first_name">First Name</option>
-        <option value="last_name">Last Name</option>
-        <option value="job_reference_number">Job Ref</option>
-        <option value="status">Status</option>
-    </select>
-    </label><br><br>
-
-    <button type="submit">Run Query</button>
+    <label>Username: <input type="text" name="username" required></label><br>
+    <label>Password: <input type="password" name="password" required></label><br>
+    <button type="submit">Register</button>
 </form>
-
-<?php
-if (!empty($result) && mysqli_num_rows($result) > 0) {
-    echo "<h3>Results:</h3><table border='1' cellpadding='5'>";
-    echo "<tr>
-        <th>EOInumber</th><th>Job Ref</th><th>Name</th><th>Email</th>
-        <th>Phone</th><th>Skills</th><th>Other Skills</th><th>Status</th>
-        <th>Change Status</th>
-    </tr>";
-    while ($row = mysqli_fetch_assoc($result)) {
-    $skills = trim(($row['skill1'] ?? '') . " " . ($row['skill2'] ?? ''));
-        echo "<tr>
-            <td>" . htmlspecialchars($row['EOInumber']) . "</td>
-            <td>" . htmlspecialchars($row['job_reference_number']) . "</td>
-            <td>" . htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) . "</td>
-            <td>" . htmlspecialchars($row['email']) . "</td>
-            <td>" . htmlspecialchars($row['phone']) . "</td>
-            <td>" . htmlspecialchars($skills) . "</td>
-            <td>" . htmlspecialchars($row['other_skills']) . "</td>
-            <td>" . htmlspecialchars($row['status']) . "</td>
-            <td>
-                <form method='post'>
-    <input type='hidden' name='update_status_id' value='" . htmlspecialchars($row['EOInumber']) . "'>
-                    <select name='new_status'>
-     <option value='New'>New</option>
-                        <option value='Current'>Current</option>
-       <option value='Final'>Final</option>
-                    </select>
-                    <button type='submit'>Update</button>
-                </form>
-            </td>
-        </tr>";
-    }
-    echo "</table>";
-} elseif (!empty($result)) {
-    echo "<p>No EOIs found for this query.</p>";
-}
-?>
-
-<h2>Delete EOIs by Job Reference</h2>
-<form method="post">
-    <label>Job Reference: <input type="text" name="delete_job_ref"></label>
-    <button type="submit">Delete</button>
-</form>
-
+<?php if ($message) echo "<p>$message</p>"; ?>
 <?php include 'footer.inc'; ?>
 </body>
 </html>
-
-<?php mysqli_close($conn); ?>
